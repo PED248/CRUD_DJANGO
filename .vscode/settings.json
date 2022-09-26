@@ -1,0 +1,14 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "database": "db_crud_django",
+      "username": "postgres",
+      "password": "postgres",
+      "name": "postgres_crud_django"
+    }
+  ]
+}
