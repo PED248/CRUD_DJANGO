@@ -7,6 +7,81 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
   />
 
+  
+  
+
+<style>
+ 
+body{margin-top:20px;}
+
+.chat-online {
+    color: #34ce57
+}
+
+.chat-offline {
+    color: #e4606d
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    overflow-y: scroll
+}
+
+.chat-message-left,
+.chat-message-right {
+    display: flex;
+    flex-shrink: 0
+}
+
+.chat-message-left {
+    margin-right: auto
+}
+
+.chat-message-right {
+    flex-direction: row-reverse;
+    margin-left: auto
+}
+.py-3 {
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+}
+.px-4 {
+    padding-right: 1.5rem!important;
+    padding-left: 1.5rem!important;
+}
+.flex-grow-0 {
+    flex-grow: 0!important;
+}
+.border-top {
+    border-top: 1px solid #dee2e6!important;
+}
+
+
+
+</style> 
+<script>
+	const el = document.getElementById('messages')
+	el.scrollTop = el.scrollHeight
+  function sendbtn() {
+	
+	var printtext = document.getElementById('chatmsg');
+	var copytext = document.getElementById('typemsg');
+	var currentdate = new Date();
+
+	var copiedtext = copytext.value;
+
+	var printnow = '<div class="flex justify-end pt-2 pl-10">'+'<span class="bg-green-900 h-auto text-gray-200 text-xs font-normal rounded-sm px-1 items-end flex justify-end overflow-hidden " style="font-size: 10px;">'+copiedtext+'<span class="text-gray-400 pl-1" style="font-size: 8px;">'+currentdate.getHours()+':'+currentdate.getMinutes()+'</span>'+'</span>'+'</div>';
+
+	printtext.insertAdjacentHTML('beforeend', printnow);
+
+	var box = document.getElementById('journal-scroll');
+	box.scrollTop = box.scrollHeight;
+
+}
+</script>
+
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -37,14 +112,12 @@
           <ul class="navbar-nav ms-auto">
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'tasks' %}">
-                Tasks Peding
-              </a>
+              <a class="nav-link" href="{% url 'tasks' %}"> Tasks Peding </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'tasks_completed' %}">
                 Tasks Complete
-            </a >
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/tasks/create">Tasks Create</a>
